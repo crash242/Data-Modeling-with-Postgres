@@ -7,6 +7,6 @@ The purpose of this database  is to establish a postgres database and etl pipeli
 To execute the script, follow these steps:
 1. open command prompt
 2. create the database and tables
-    python create_tables.py
+    `python create_tables.py`
 3. run the etl script:
-    python etl.py
+    `python etl.py`
