@@ -25,6 +25,7 @@ Activity logs for the streaming app is partitioned and stored in directories by 
 The databse uses a star schema which is optimized for analytical queries.
 ### Fact table
 |field_name|type|
+|---|---|
 |songplay_id (PK)|SERIAL|
 |start_time|timestamp NOT NULL|
 |user_id|int NOT NULL|
