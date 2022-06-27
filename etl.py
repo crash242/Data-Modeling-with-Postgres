@@ -92,12 +92,7 @@ def main():
     """
     master function. connects to db and processes data
     """
-    #conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
-    conn = psycopg2.connect(
-        host="192.168.1.173",
-        database="sparkifydb",
-        user="postgres",
-        password="postgres123!")
+    conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
     process_data(cur, conn, filepath='data/song_data', func=process_song_file)
