@@ -16,19 +16,20 @@ Data is stored in JSON file for both song data and log data.
 ### Song Data
 Each file contains data about a song, and the artist. The files are partitioned, and stored in directories by the first three letters of each song's track ID.  Ex: `song_data/A/B/C/TRABCEI128F424C983.json`.
 
-Sample Data: `{"num_songs": 1, "artist_id": "ARJIE2Y1187B994AB7", "artist_latitude": null, "artist_longitude": null, "artist_location": "", "artist_name": "Line Renaud", "song_id": "SOUPIRU12A6D4FA1E1", "title": "Der Kleine Dompfaff", "duration": 152.92036, "year": 0}`
+Sample Data: ```JSON {"num_songs": 1, "artist_id": "ARJIE2Y1187B994AB7", "artist_latitude": null, "artist_longitude": null, "artist_location": "", "artist_name": "Line Renaud", "song_id": "SOUPIRU12A6D4FA1E1", "title": "Der Kleine Dompfaff", "duration": 152.92036, "year": 0}```
 
 ### Log Data
 Activity logs for the streaming app is partitioned and stored in directories by year and month. Ex: `log_data/2018/11/2018-11-12-events.json'
 
-## State and justify your database schema design and ETL pipeline.
+## Database schema design and ETL pipeline.
 The databse uses a star schema which is optimized for analytical queries.
 ### Fact table
+#### songplays
 |field_name|type|
 |---|---|
 |songplay_id (PK)|SERIAL|
-|start_time|timestamp NOT NULL|
-|user_id|int NOT NULL|
+|start_time|timestamp (NOT NULL)|
+|user_id|int (NOT NULL)|
 |level|varchar|
 |song_id|varchar|
 |artist_id|varchar|
@@ -37,3 +38,37 @@ The databse uses a star schema which is optimized for analytical queries.
 |user_agent|varchar
 
 ### Dimension Tables
+#### users 
+|field_name|type|
+|---|---|
+|user_id|int|
+|first_name|varchar|
+|last_name|varchar|
+|gender|varchar|
+|level|varchar
+#### songs 
+|field_name|type|
+|---|---|
+|song_id|varchar|
+|title|varchar|
+|artist_id|varchar|
+|year|int|
+|duration|float
+#### artists 
+|field_name|type|
+|---|---|
+|artist_id|varchar (NOT NULL)|
+|name|varchar|
+|location|varchar|
+|latitude|float|
+|longitude|float
+#### time 
+|field_name|type|
+|---|---|
+|start_time|timestamp|
+|hour|int|
+|day|int|
+|week|int|
+|month|int|
+|year|int|
+|weekday|int
